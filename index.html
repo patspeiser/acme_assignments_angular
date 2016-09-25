@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<link rel='stylesheet' href='bootstrap/dist/css/bootstrap.css' />
+		<script src='/angular/angular.js'></script>
+		<script src='/angular-ui-router/release/angular-ui-router.js'></script>
+		<script src='/app.js'></script>
+		<script src='/region/RegionListCtrl.js'></script>
+		<script src='/region/RegionService.js'></script>
+		<script src='/CompanyCtrl.js'></script>
+		<script src='/salesPerson/SalesPersonListCtrl.js'></script>
+		<script src='/salesPerson/SalesPersonService.js'></script>
+	</head>
+
+	<body ng-app='acme_assignments'>
+		<div class='container'>
+			<h1> Acme Assignments Angular </h1>
+			<div>
+				<ul class='nav nav-tabs'>
+					<li role='presentation' ui-sref-active='active'><a ui-sref='home'>Home</a></li>
+					<li role='presentation' ui-sref-active='active' ui-sref='regions'><a>Regions</a></li>
+					<li role='presentation' ui-sref-active='active'><a ui-sref='salesPeople'>Sales People</a></li>
+				</ul>
+			</div>
+		</div>
+		<ui-view></ui-view>
+	</body>
+</html>
