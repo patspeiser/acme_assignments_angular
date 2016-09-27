@@ -1,5 +1,5 @@
-<div class='well' ng-controller='SalesPersonListCtrl'>
-	<div class='form-group'>
+<div ng-controller='SalesPersonListCtrl'>
+	<div class='form-group well'>
 		<input class='form-control' placeholder='Add New Salesperson' ng-model='name'/>
 		<button class='btn btn-primary' ng-click='create()' ng-disabled='!name'> Create </button>	
 	</div>
@@ -8,11 +8,19 @@
 		<br clear='all'/> 
 	</div>
 	<div>
-		<ul class='list=group'>
-				<li class='list-group-item' ng-repeat='salesPerson in salesPeople'>
+		<ul class='list-group'>
+				<li class='list-group-item well' ng-repeat='salesPerson in salesPeople'>
+				{{salesPerson}}
 					{{ salesPerson.name }}
 					<button class='btn btn-danger pull-right' ng-click='destroy(salesPerson)'> Delete </button>
 					<br clear='all'/>
+						 <ul class='list-group'>
+							 <li ng-class="salesPerson.hasAssignment(region.id) ? 'list-group-item list-group-item-success' : 'list-group-item' " ng-click='toggleAssignment(salesPerson, region)' ng-repeat='region in regions'>
+							 {{ region.zipCode }}
+							 </li>
+						 </ul>
+
+
 				</li>
 		</ul>
 	</div>

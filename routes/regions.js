@@ -6,7 +6,6 @@ module.exports = router;
 router.get('/', function(req, res, next){
 	Region.findAll()
 		.then(function(regions){
-			console.log('in regions.js GET /');
 			res.send(regions);
 		})
 		.catch(next);

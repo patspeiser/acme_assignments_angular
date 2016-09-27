@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const SalesPerson = require('../db').models.SalesPerson;
+const Assignment = require('../db').models.Assignment
+const Promise = require('bluebird');
 
 module.exports = router;
 
 router.get('/', function(req, res, next){
-	SalesPerson.findAll()
+	SalesPerson.findAll({include: [Assignment] })
 		.then(function(salesPeople){
-			console.log('in salesPeople.js GET /');
 			res.send(salesPeople);
 		})
 		.catch(next);
@@ -26,4 +27,15 @@ router.delete('/:id', function(req, res, next){
 			res.sendStatus(200);
 		})
 		.catch(next);
+})
+
+router.post('/:id/region/:regionId', function(req, res, next){
+	Assignment.create({ 
+		salesPersonId: req.params.id,
+		regionId: req.params.regionId
+	})
+	.then(function(assignment){
+		res.send(assignment);
+	})
+	.catch(next);
 })

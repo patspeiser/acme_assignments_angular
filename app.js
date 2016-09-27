@@ -11,6 +11,5 @@ app.use('/api/regions', require('./routes/regions'));
 app.use('/api/salesPeople', require('./routes/salesPeople'));
 
 app.get('/', function(req, res, next){
-	console.log('in /');
 	res.sendFile(path.join(__dirname, 'index.html'));
 });

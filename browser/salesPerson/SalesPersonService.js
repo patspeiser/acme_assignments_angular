@@ -5,7 +5,8 @@ angular.module('acme_assignments')
 		return {
 			findAll: findAll,
 			create: create,
-			destroy: destroy
+			destroy: destroy,
+			toggleAssignment: toggleAssignment
 		};
 
 		function findAll(){
@@ -19,8 +20,6 @@ angular.module('acme_assignments')
 		function create(salesPerson){
 			return $http.post('/api/salesPeople', salesPerson)
 				.then(function(result){
-					console.log('in factory create');
-					console.log(result.data, salesPeople);
 					salesPeople.push(result.data);
 				})
 		};
@@ -29,6 +28,13 @@ angular.module('acme_assignments')
 			return $http.delete('/api/salesPeople/' + salesPerson.id)
 				.then(function(){
 					salesPeople.splice(salesPeople.indexOf(salesPerson), 1);
+				})
+		};
+
+		function toggleAssignment(salesPerson, region){
+			return $http.post('api/salesPeople/' + salesPerson.id + '/region/' + region.id)
+				.then(function(result){
+					return result.data;
 				})
 		}
 	})
