@@ -3,20 +3,6 @@ const db = new Sequelize(process.env.DATABASE_URL, { logging: false });
 
 var SalesPerson = db.define('sales_person', {
 	name: Sequelize.STRING
-},{
-	instanceMethods: {
-		hasAssignment: function(id){
-			console.log('waaaay in the model');
-			var hasAssignment = false; 
-			if (this.Assignments){
-				this.Assignments.forEach( function(assignment){
-					if (assignment.id = id){
-						hasAssignment = true;
-					};
-				});
-			}
-		}
-	}
 });
 
 var Region = db.define('region', {

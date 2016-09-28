@@ -36,7 +36,7 @@ angular.module('acme_assignments')
 		$scope.toggleAssignment = function(salesPerson, region){
 			SalesPersonService.toggleAssignment(salesPerson, region)
 				.then(function(assignment){
-					console.log(assignment);
+					
 				})
 				.catch(function(err){
 					console.log(err);

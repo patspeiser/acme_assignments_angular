@@ -1,9 +1,10 @@
-<div ng-controller='SalesPersonListCtrl'>
-	<div class='form-group well'>
-		<input class='form-control' placeholder='Add New Salesperson' ng-model='name'/>
-		<button class='btn btn-primary' ng-click='create()' ng-disabled='!name'> Create </button>	
-	</div>
-
+<div class='container' ng-controller='SalesPersonListCtrl'>
+	<form name='form'>
+		<div class='form-group well'>
+			<input class='form-control' placeholder='Add New Salesperson' ng-model='name' required/>
+			<button class='btn btn-primary' ng-click='create()' ng-disabled='form.$invalid'> Create </button>	
+		</div>
+	</form>
 	<div> 
 		<br clear='all'/> 
 	</div>
@@ -15,7 +16,7 @@
 					<button class='btn btn-danger pull-right' ng-click='destroy(salesPerson)'> Delete </button>
 					<br clear='all'/>
 						 <ul class='list-group'>
-							 <li ng-class="salesPerson.hasAssignment(region.id) ? 'list-group-item list-group-item-success' : 'list-group-item' " ng-click='toggleAssignment(salesPerson, region)' ng-repeat='region in regions'>
+							 <li ng-class="true ? 'list-group-item list-group-item-success' : 'list-group-item' " ng-click='toggleAssignment(salesPerson, region)' ng-repeat='region in regions'>
 							 {{ region.zipCode }}
 							 </li>
 						 </ul>

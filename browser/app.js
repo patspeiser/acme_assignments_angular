@@ -5,7 +5,7 @@ angular.module('acme_assignments')
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'home.html'
+				templateUrl: 'home.html',
 			})
 			.state('salesPeople', {
 				url: '/salesPeople',

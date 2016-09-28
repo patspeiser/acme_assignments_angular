@@ -1,9 +1,10 @@
-<div class='well' ng-controller='RegionListCtrl'>
-	<div class='form-group'>
-		<input class='form-control' placeholder='Add New Region' ng-model='zipCode'/>
-		<button class='btn btn-primary' ng-click='create()' ng-disabled='!zipCode'> Create </button>	
-	</div>
-
+<div class='well container' ng-controller='RegionListCtrl'>
+	<form name='form'>
+		<div class='form-group'>
+			<input class='form-control' placeholder='Add New Region' ng-model='zipCode' required/>
+			<button class='btn btn-primary' ng-click='create()' ng-disabled='form.$invalid'> Create </button>	
+		</div>
+	</form>
 	<div> 
 		<br clear='all'/> 
 	</div>

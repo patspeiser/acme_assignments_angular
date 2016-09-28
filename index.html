@@ -22,6 +22,12 @@
 				</ul>
 			</div>
 		</div>
+		<div class='container' ng-controller='CompanyCtrl'>
+			<ul class='list-group'>
+				<li ng-class="regions.length >3 ? 'list-group-item list-group-item-success' : 'list-group-item' ">There are {{ regions.length }} regions.</li>
+				<li ng-class="salesPeople.length >3 ? 'list-group-item list-group-item-success' : 'list-group-item' ">There are {{ salesPeople.length }} sales people.</li>
+			</ul>
+		</div>
 		<ui-view></ui-view>
 	</body>
 </html>
