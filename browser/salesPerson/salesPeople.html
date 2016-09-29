@@ -11,17 +11,14 @@
 	<div>
 		<ul class='list-group'>
 				<li class='list-group-item well' ng-repeat='salesPerson in salesPeople'>
-				{{salesPerson}}
 					{{ salesPerson.name }}
 					<button class='btn btn-danger pull-right' ng-click='destroy(salesPerson)'> Delete </button>
 					<br clear='all'/>
 						 <ul class='list-group'>
-							 <li ng-class="true ? 'list-group-item list-group-item-success' : 'list-group-item' " ng-click='toggleAssignment(salesPerson, region)' ng-repeat='region in regions'>
-							 {{ region.zipCode }}
+							 <li ng-class="hasAssignment(salesPerson, region) ? 'list-group-item list-group-item-success' : 'list-group-item' " ng-repeat='region in regions'>
+							 <a ng-click='toggleAssignment(salesPerson, region)'>{{ region.zipCode }}</a>
 							 </li>
 						 </ul>
-
-
 				</li>
 		</ul>
 	</div>

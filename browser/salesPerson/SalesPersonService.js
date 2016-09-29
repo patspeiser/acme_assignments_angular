@@ -20,7 +20,6 @@ angular.module('acme_assignments')
 		function create(salesPerson){
 			return $http.post('/api/salesPeople', salesPerson)
 				.then(function(result){
-					console.log(result.data);
 					salesPeople.push(result.data);
 				})
 		};
@@ -35,8 +34,8 @@ angular.module('acme_assignments')
 		function toggleAssignment(salesPerson, region){
 			return $http.post('api/salesPeople/' + salesPerson.id + '/region/' + region.id)
 				.then(function(result){
-					console.log(result.data);
 					return result.data;
 				})
-		}
+		};
+
 	})
