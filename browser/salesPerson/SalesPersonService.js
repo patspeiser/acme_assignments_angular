@@ -3,39 +3,35 @@ angular.module('acme_assignments')
 		var salesPeople = [];
 
 		return {
-			findAll: findAll,
-			create: create,
-			destroy: destroy,
-			toggleAssignment: toggleAssignment
-		};
+			findAll: function(){
+				return $http.get('/api/salesPeople')
+					.then(function(result){
+						angular.copy(result.data, salesPeople);
+						return salesPeople;
+					})
+			},
 
-		function findAll(){
-			return $http.get('/api/salesPeople')
-				.then(function(result){
-					angular.copy(result.data, salesPeople);
-					return salesPeople;
-				})
-		};
+			create: function(salesPerson){
+				return $http.post('/api/salesPeople', salesPerson)
+					.then(function(result){
+						salesPeople.push(result.data);
+					})
+			},
 
-		function create(salesPerson){
-			return $http.post('/api/salesPeople', salesPerson)
-				.then(function(result){
-					salesPeople.push(result.data);
-				})
-		};
+			destroy: function(salesPerson){
+				return $http.delete('/api/salesPeople/' + salesPerson.id)
+					.then(function(){
+						salesPeople.splice(salesPeople.indexOf(salesPerson), 1);
+					})
+			},
 
-		function destroy(salesPerson){
-			return $http.delete('/api/salesPeople/' + salesPerson.id)
-				.then(function(){
-					salesPeople.splice(salesPeople.indexOf(salesPerson), 1);
-				})
-		};
-
-		function toggleAssignment(salesPerson, region){
-			return $http.post('api/salesPeople/' + salesPerson.id + '/region/' + region.id)
-				.then(function(result){
-					return result.data;
-				})
-		};
+			toggleAssignment: function(salesPerson, region){
+				var that = this;
+				return $http.post('api/salesPeople/' + salesPerson.id + '/region/' + region.id)
+					.then(function(result){
+						return that.findAll();
+					})
+			}
+		}
 
 	})

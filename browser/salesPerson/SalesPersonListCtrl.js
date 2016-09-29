@@ -36,16 +36,18 @@ angular.module('acme_assignments')
 		$scope.toggleAssignment = function(salesPerson, region){
 			SalesPersonService.toggleAssignment(salesPerson, region)
 				.then(function(assignment){
+					console.log(assignment);
 				})
 				.catch(function(err){
 					console.log(err);
 				})
 		}
 		$scope.hasAssignment = function(salesPerson, region){
+			var hasAssignment = false;
 			if(salesPerson.assignments){
 				salesPerson.assignments.filter(function(assignment){
 					if (assignment.regionId === region.id){
-						hasAssignment = true;
+						return hasAssignment = true;
 					}
 				})	
 			}
